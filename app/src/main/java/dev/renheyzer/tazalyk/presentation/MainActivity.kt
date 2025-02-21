@@ -8,7 +8,11 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
+import com.arkivanov.decompose.defaultComponentContext
+import dev.renheyzer.tazalyk.components.root.DefaultRootComponent
+import dev.renheyzer.tazalyk.components.root.RootComponent
+import dev.renheyzer.tazalyk.presentation.screens.root.RootUi
+import dev.renheyzer.tazalyk.ui.theme.TazalykCorner
 import dev.renheyzer.tazalyk.ui.theme.TazalykSize
 import dev.renheyzer.tazalyk.ui.theme.TazalykStyle
 import dev.renheyzer.tazalyk.ui.theme.TazalykTheme
@@ -17,6 +21,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        val rootComponent: RootComponent = DefaultRootComponent(defaultComponentContext())
         setContent {
             val isDarkModeValue = isSystemInDarkTheme()
 
@@ -34,11 +39,7 @@ class MainActivity : ComponentActivity() {
                 darkTheme = tazalykStyle.value.isDarkMode
             ) {
                 Scaffold { innerPadding ->
-                    Column(
-                        modifier = Modifier.padding(innerPadding)
-                    ) {
-
-                    }
+                    RootUi(innerPadding, rootComponent)
                 }
             }
         }
