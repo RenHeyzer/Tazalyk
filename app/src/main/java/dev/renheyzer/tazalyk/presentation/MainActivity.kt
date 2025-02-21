@@ -1,13 +1,10 @@
-package dev.renheyzer.tazalyk
+package dev.renheyzer.tazalyk.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -27,6 +24,7 @@ class MainActivity : ComponentActivity() {
                 mutableStateOf(
                     TazalykStyle(
                         textSize = TazalykSize.Medium,
+                        corner = TazalykCorner.Medium,
                         isDarkMode = isDarkModeValue
                     )
                 )
