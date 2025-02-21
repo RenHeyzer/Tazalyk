@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Tazalyk</string>
+    <string name="sign_up_with_phone">Зарегистрироваться через номер телефона</string>
+    <string name="sign_up_with_email">Зарегистрироваться через Email</string>
+    <string name="sign_up">Регистрация</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="email">Email</string>
+    <string name="phone_prefix">+996</string>
+    <string name="next">ДАЛЕЕ</string>
 </resources>
