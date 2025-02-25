@@ -3,6 +3,7 @@ package dev.renheyzer.tazalyk.presentation.screens.root
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.windowInsetsPadding
@@ -10,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.stack.Children
 import dev.renheyzer.tazalyk.components.root.RootComponent
 import dev.renheyzer.tazalyk.presentation.screens.signin.SignInScreen
@@ -30,7 +32,13 @@ fun RootUi(innerPadding: PaddingValues, rootComponent: RootComponent) {
     ) { child ->
         when (val instance = child.instance) {
             is RootComponent.Child.SignIn -> SignInScreen(instance.component)
-            is RootComponent.Child.SignUp -> SignUpScreen(instance.component, onNext = {})
+            is RootComponent.Child.SignUp -> SignUpScreen(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                component = instance.component,
+                onNext = {}
+            )
         }
     }
 }

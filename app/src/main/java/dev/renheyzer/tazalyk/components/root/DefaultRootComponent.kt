@@ -3,6 +3,7 @@ package dev.renheyzer.tazalyk.components.root
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
+import com.arkivanov.decompose.router.stack.pushNew
 import dev.renheyzer.tazalyk.components.signin.RealSignInComponent
 import dev.renheyzer.tazalyk.components.signin.SignInComponent
 import dev.renheyzer.tazalyk.components.signup.RealSignUpComponent
@@ -40,7 +41,10 @@ class DefaultRootComponent(
     private fun signUp(componentContext: ComponentContext): SignUpComponent =
         RealSignUpComponent(
             componentContext = componentContext,
-            navigateToConfirm = {}
+            navigateToConfirm = {},
+            navigateToSignIn = {
+                navigation.pushNew(Config.SignIn)
+            }
         )
 
     @Serializable
