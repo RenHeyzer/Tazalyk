@@ -7,7 +7,10 @@ import dev.renheyzer.tazalyk.components.utils.Validator
 class PhoneValidator(private val next: Validator? = null) : BaseValidator(next) {
 
     override fun validate(data: String): Boolean {
-        return if (data[0] == '0') throw IllegalArgumentException("Номер не должен содержать \"0\" в начале")
+        return if (data[0] == '0')
+            throw IllegalArgumentException("Номер не должен содержать \"0\" в начале")
+        else if (next != null && Patterns.EMAIL_ADDRESS.matcher(data).matches())
+            next.validate(data)
         else true
     }
 }
