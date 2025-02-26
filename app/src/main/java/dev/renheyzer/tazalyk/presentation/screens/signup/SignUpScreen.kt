@@ -38,7 +38,6 @@ import dev.renheyzer.tazalyk.ui.theme.TazalykTheme
 fun SignUpScreen(
     modifier: Modifier = Modifier,
     component: SignUpComponent,
-    onNext: (data: String) -> Unit
 ) {
 
     val uiState by component.uiState.collectAsState()
@@ -101,7 +100,7 @@ fun SignUpScreen(
         )
 
         ElevatedButton(
-            onClick = { onNext(uiState.inputValue) },
+            onClick = { component.onSignUpClick(uiState) },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(76.dp)
@@ -134,7 +133,7 @@ fun SignUpScreen(
             text = stringResource(R.string.sign_in),
             modifier = Modifier
                 .padding(16.dp)
-                .clickable {  },
+                .clickable { },
             color = TazalykTheme.colors.secondaryText,
             style = TazalykTheme.typography.body,
             textAlign = TextAlign.Center
@@ -152,7 +151,6 @@ fun PreviewSignUpContent() {
                 .fillMaxSize()
                 .padding(16.dp),
             component = PreviewSignUpComponent(),
-            onNext = {}
         )
     }
 }

@@ -24,6 +24,6 @@ interface SignUpComponent {
     fun changeInput(input: Boolean)
     fun updateCursorPosition(position: Int)
 
-    fun onSignUpClick(data: String)
+    fun onSignUpClick(uiState: UiState)
     fun onSignInClick()
 }
