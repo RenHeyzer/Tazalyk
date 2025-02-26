@@ -4,6 +4,9 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.essenty.instancekeeper.InstanceKeeper
 import com.arkivanov.essenty.instancekeeper.retainedInstance
 import com.arkivanov.essenty.statekeeper.saveable
+import dev.renheyzer.tazalyk.components.signup.utils.EmailValidator
+import dev.renheyzer.tazalyk.components.signup.utils.PhoneValidator
+import dev.renheyzer.tazalyk.components.utils.Validator
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -14,7 +17,10 @@ class RealSignUpComponent(
     private val navigateToSignIn: () -> Unit
 ) : SignUpComponent, ComponentContext by componentContext {
 
-    private val viewModel = retainedInstance { SignUpViewModel() }
+    private val emailValidator: Validator = EmailValidator()
+    private val phoneValidator: Validator = PhoneValidator(emailValidator)
+
+    private val viewModel = retainedInstance { SignUpViewModel(phoneValidator) }
 
     /** Save UiState by kill process or change configuration */
     private val _uiState: MutableStateFlow<SignUpComponent.UiState> by stateKeeper.saveable(
@@ -23,6 +29,7 @@ class RealSignUpComponent(
     ) {
         MutableStateFlow(it ?: SignUpComponent.UiState())
     }
+
     override val uiState = _uiState.asStateFlow()
 
     /**
@@ -49,8 +56,8 @@ class RealSignUpComponent(
     /**
      *
      */
-    override fun onSignUpClick(data: String) {
-        viewModel.signUp(data)
+    override fun onSignUpClick(uiState: SignUpComponent.UiState) {
+        viewModel.signUp(uiState)
         navigateToConfirm()
     }
 
@@ -58,13 +65,16 @@ class RealSignUpComponent(
         navigateToSignIn()
     }
 
-    private class SignUpViewModel : InstanceKeeper.Instance {
+    private class SignUpViewModel(
+        private val phoneValidator: Validator
+    ) : InstanceKeeper.Instance {
 
         private val _state = MutableStateFlow(SignUpComponent.Model())
         val state = _state.asStateFlow()
 
-        fun signUp(data: String) {
 
+        fun signUp(uiState: SignUpComponent.UiState) {
+            phoneValidator.validate(uiState.inputValue)
         }
 
         override fun onDestroy() {
