@@ -14,7 +14,7 @@ interface SignUpComponent {
     data class UiState(
         val inputValue: String = "",
         val cursorPosition: Int = 0,
-        val isError: Boolean = false,
+        val errorMessage: String = "",
         val isPhoneInput: Boolean = true,
     )
 
@@ -24,6 +24,6 @@ interface SignUpComponent {
     fun changeInput(input: Boolean)
     fun updateCursorPosition(position: Int)
 
-    fun onSignUpClick(uiState: UiState)
+    fun onSignUpClick()
     fun onSignInClick()
 }
