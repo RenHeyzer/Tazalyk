@@ -14,7 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.stack.Children
 import dev.renheyzer.tazalyk.components.root.RootComponent
-import dev.renheyzer.tazalyk.presentation.screens.signin.SignInScreen
+import dev.renheyzer.tazalyk.presentation.screens.confirm.ConfirmScreen
+import dev.renheyzer.tazalyk.presentation.screens.createpassword.CreatePasswordScreen
+import dev.renheyzer.tazalyk.presentation.screens.login.LoginScreen
 import dev.renheyzer.tazalyk.presentation.screens.signup.SignUpScreen
 import dev.renheyzer.tazalyk.ui.theme.TazalykTheme
 
@@ -31,13 +33,32 @@ fun RootUi(innerPadding: PaddingValues, rootComponent: RootComponent) {
         stack = childStack
     ) { child ->
         when (val instance = child.instance) {
-            is RootComponent.Child.SignIn -> SignInScreen(instance.component)
+            is RootComponent.Child.SignIn -> LoginScreen(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                component = instance.component
+            )
+
             is RootComponent.Child.SignUp -> SignUpScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(16.dp),
                 component = instance.component,
-                onNext = {}
+            )
+
+            is RootComponent.Child.Confirm -> ConfirmScreen(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                component = instance.component
+            )
+
+            is RootComponent.Child.CreatePassword -> CreatePasswordScreen(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                component = instance.component
             )
         }
     }
