@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.update
 
 class RealSignUpComponent(
     componentContext: ComponentContext,
-    private val navigateToConfirm: () -> Unit,
+    private val navigateToConfirm: (inputValue: String, isPhoneInput: Boolean) -> Unit,
     private val navigateToSignIn: () -> Unit
 ) : SignUpComponent, ComponentContext by componentContext {
 
@@ -54,13 +54,24 @@ class RealSignUpComponent(
     }
 
     /**
+     * Handles the sign-up button click event.
      *
+     * @param uiState The current UI state of the [SignUpComponent], containing ui state of
+     * `SignUpScreen` and user input data.
+     *
+     * This function calls `signUp()` on the `viewModel`, passing the current sign-up state,
+     * and then navigates to the confirmation screen.
      */
-    override fun onSignUpClick(uiState: SignUpComponent.UiState) {
-        viewModel.signUp(uiState)
-        navigateToConfirm()
+    override fun onSignUpClick() = with(uiState) {
+        viewModel.signUp(value)
+        navigateToConfirm(value.inputValue, value.isPhoneInput)
     }
 
+    /**
+     * Handles the sign-in button click event.
+     *
+     * This function navigates to the `SignInScreen`
+     */
     override fun onSignInClick() {
         navigateToSignIn()
     }
