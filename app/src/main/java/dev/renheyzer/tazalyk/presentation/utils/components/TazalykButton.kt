@@ -22,6 +22,7 @@ fun TazalykButton(
         onClick = onClick,
         modifier = Modifier
             .widthIn(min = 150.dp, max = 320.dp)
+            .fillMaxWidth()
             .height(76.dp)
             .padding(16.dp),
         enabled = enabled,
