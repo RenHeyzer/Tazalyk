@@ -4,13 +4,14 @@ import android.util.Patterns
 import dev.renheyzer.tazalyk.components.utils.BaseValidator
 import dev.renheyzer.tazalyk.components.utils.Validator
 
-class PhoneValidator(private val next: Validator? = null) : BaseValidator(next) {
+class PhoneValidator(next: Validator? = null) : BaseValidator(next) {
 
-    override fun validate(data: String): Boolean {
-        return if (data[0] == '0')
-            throw IllegalArgumentException("Номер не должен содержать \"0\" в начале")
-        else if (next != null && Patterns.EMAIL_ADDRESS.matcher(data).matches())
-            next.validate(data)
-        else true
+    override fun validate(data: String): Result<Boolean> {
+        if (data[0] == '0')
+            return Result.failure(IllegalArgumentException("Номер не должен содержать \"0\" в начале"))
+        if (Patterns.EMAIL_ADDRESS.matcher(data).matches()) {
+            super.validate(data)
+        }
+        return Result.success(true)
     }
 }
