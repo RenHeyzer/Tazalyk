@@ -68,4 +68,8 @@ dependencies {
     // Hilt
     implementation(libs.bundles.hilt)
     ksp(libs.hilt.compiler)
+
+    // Koin
+    implementation(platform(libs.koin.bom))
+    implementation(libs.bundles.koin)
 }
