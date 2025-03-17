@@ -45,7 +45,6 @@ fun SignUpScreen(
             TextFieldValue(uiState.inputValue, TextRange(uiState.cursorPosition))
         )
     }
-
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.Center,

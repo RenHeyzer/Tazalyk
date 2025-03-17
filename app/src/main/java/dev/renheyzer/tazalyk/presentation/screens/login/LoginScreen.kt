@@ -25,7 +25,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.renheyzer.tazalyk.R
-import dev.renheyzer.tazalyk.components.signin.LoginComponent
+import dev.renheyzer.tazalyk.components.login.LoginComponent
 import dev.renheyzer.tazalyk.presentation.utils.MaskVisualTransformation
 import dev.renheyzer.tazalyk.presentation.utils.NumberDefaults
 import dev.renheyzer.tazalyk.presentation.utils.components.OutlinedErrorTextField

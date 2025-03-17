@@ -1,5 +1,6 @@
 package dev.renheyzer.tazalyk.components.signup
 
+import com.arkivanov.essenty.instancekeeper.InstanceKeeper
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.serialization.Serializable
 
@@ -16,13 +17,18 @@ interface SignUpComponent {
         val cursorPosition: Int = 0,
         val errorMessage: String = "",
         val isPhoneInput: Boolean = true,
+        val password: String = "",
+        val confirmPassword: String = "",
     )
 
     val uiState: StateFlow<UiState>
+    val state: StateFlow<Model>
 
     fun updateInputValue(value: String)
     fun changeInput(input: Boolean)
     fun updateCursorPosition(position: Int)
+    fun updatePassword(password: String)
+    fun updateConfirmPassword(password: String)
 
     fun onSignUpClick()
     fun onSignInClick()

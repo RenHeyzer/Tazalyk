@@ -1,8 +1,8 @@
 package dev.renheyzer.tazalyk.components.utils
 
-class PasswordValidator(private val next: Validator? = null) : BaseValidator(next) {
+class PasswordValidator : BaseValidator() {
 
-    override fun validate(data: String): Result<Boolean> {
+    override fun validate(data: String): Result<String> {
         if (data.length < 8) {
             return Result.failure(IllegalArgumentException("Пароль должен содержать минимум 8 символов"))
         }
@@ -20,6 +20,6 @@ class PasswordValidator(private val next: Validator? = null) : BaseValidator(nex
             return Result.failure(IllegalArgumentException("Пароль должен содержать хотя бы один специальный символ"))
         }
 
-        return next?.validate(data) ?: Result.success(true)
+        return Result.success(data)
     }
 }

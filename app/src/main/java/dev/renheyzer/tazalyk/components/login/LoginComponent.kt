@@ -1,4 +1,4 @@
-package dev.renheyzer.tazalyk.components.signin
+package dev.renheyzer.tazalyk.components.login
 
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.serialization.Serializable

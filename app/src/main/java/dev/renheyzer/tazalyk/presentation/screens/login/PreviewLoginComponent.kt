@@ -1,6 +1,6 @@
 package dev.renheyzer.tazalyk.presentation.screens.login
 
-import dev.renheyzer.tazalyk.components.signin.LoginComponent
+import dev.renheyzer.tazalyk.components.login.LoginComponent
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 

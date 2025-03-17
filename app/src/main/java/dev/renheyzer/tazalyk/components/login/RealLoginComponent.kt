@@ -1,10 +1,9 @@
-package dev.renheyzer.tazalyk.components.signin
+package dev.renheyzer.tazalyk.components.login
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.essenty.instancekeeper.InstanceKeeper
 import com.arkivanov.essenty.instancekeeper.getOrCreate
 import com.arkivanov.essenty.statekeeper.saveable
-import dev.renheyzer.tazalyk.components.signup.SignUpComponent
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
