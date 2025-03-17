@@ -13,6 +13,8 @@ material = "1.12.0"
 decompose = "3.2.2"
 hilt = "2.51.1"
 koin-bom = "4.0.2"
+okhttp = "4.12.0"
+retrofit = "2.11.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -47,6 +49,15 @@ koin-bom = { group = "io.insert-koin", name = "koin-bom", version.ref = "koin-bo
 koin-core = { group = "io.insert-koin", name = "koin-core"}
 koin-android = { group = "io.insert-koin", name = "koin-android"}
 koin-android-compose = { group = "io.insert-koin", name = "koin-androidx-compose"}
+
+#OkHttp
+okhttp-bom = { group = "com.squareup.okhttp3", name = "okhttp-bom", version.ref = "okhttp" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp" }
+okhttp-logging-interception = { group = "com.squareup.okhttp3", name = "logging-interceptor" }
+
+#Retrofit
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit-serialization-converter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.require = "1.0.0" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

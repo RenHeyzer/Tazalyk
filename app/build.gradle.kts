@@ -72,4 +72,13 @@ dependencies {
     // Koin
     implementation(platform(libs.koin.bom))
     implementation(libs.bundles.koin)
+
+    // OkHttp
+    implementation(platform(libs.okhttp.bom))
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interception)
+
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.serialization.converter)
 }
